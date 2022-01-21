@@ -19,6 +19,10 @@ public class MarkdownParse {
             if (openParen == -1) break;
             int closeParen = markdown.indexOf(")", openParen);
             if (closeParen == -1) break;
+            String check = markdown.substring(openParen + 1, closeParen);
+        	if (check.contains("(")) {
+        		openParen = markdown.indexOf("(", openParen + 1);
+        	}
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
