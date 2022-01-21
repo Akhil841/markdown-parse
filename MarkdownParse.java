@@ -11,8 +11,10 @@ public class MarkdownParse {
         // the next )
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
+        	boolean image = false;
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
             if (nextOpenBracket == -1) break;
+            if (nextOpenBracket != 0 && markdown.toCharArray()[nextOpenBracket-1] == '!') image = true;
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             if (nextCloseBracket == -1) break;
             int openParen = markdown.indexOf("(", nextCloseBracket);
@@ -23,7 +25,7 @@ public class MarkdownParse {
         	if (check.contains("(")) {
         		openParen = markdown.indexOf("(", openParen + 1);
         	}
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            if (!image) toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
         return toReturn;
