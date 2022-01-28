@@ -1,10 +1,11 @@
 import static org.junit.Assert.*;
-import org.junit.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+
+import org.junit.*;
 
 public class MarkdownParseTest {
     @Test
@@ -13,10 +14,72 @@ public class MarkdownParseTest {
     }
 
     @Test
-    public void testFile1() throws IOException {
+    public void testfile0() throws IOException {
         String contents= Files.readString(Path.of("./test-file.md"));
         List<String> expect = List.of("https://something.com", "some-page.html");
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
     
+    @Test
+    public void testfile1() throws IOException {
+    	String contents= Files.readString(Path.of("./testfile1.md"));
+        List<String> expect = List.of();
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+    
+    @Test
+    public void testfile2() throws IOException {
+        String contents= Files.readString(Path.of("./testfile2.md"));
+        List<String> expect = List.of("sussy.com", "ahdjfads.com");
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+    
+    @Test
+    public void testfile22() throws IOException {
+    	String contents= Files.readString(Path.of("./test-file2.md"));
+        List<String> expect = List.of("https://something.com", "some-page.html");
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+    
+    @Test
+    public void testfile3() throws IOException {
+    	String contents= Files.readString(Path.of("./test-file3.md"));
+        List<String> expect = List.of();
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+    
+    @Test
+    public void testfile4() throws IOException {
+    	String contents= Files.readString(Path.of("./test-file4.md"));
+        List<String> expect = List.of();
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+    
+    @Test
+    public void testfile5() throws IOException {
+    	String contents= Files.readString(Path.of("./test-file3.md"));
+        List<String> expect = List.of();
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+    
+    @Test
+    public void testfile6() throws IOException {
+    	String contents= Files.readString(Path.of("./test-file6.md"));
+        List<String> expect = List.of();
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+    
+    @Test
+    public void testfile7() throws IOException {
+    	String contents= Files.readString(Path.of("./test-file7.md"));
+        List<String> expect = List.of();
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+    
+    @Test
+    public void testfile8() throws IOException {
+    	String contents= Files.readString(Path.of("./test-file3.md"));
+        List<String> expect = List.of();
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
 }
