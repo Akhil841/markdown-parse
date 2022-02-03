@@ -25,6 +25,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      # Prints hardware specs of VM because I'm curious
+      - name: Print VM hardware
+        run: lscpu
       # Runs a set of commands using the runners shell
       - name: Execute unit tests
         run: |
