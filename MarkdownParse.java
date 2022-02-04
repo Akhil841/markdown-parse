@@ -17,7 +17,6 @@ public class MarkdownParse {
             if (nextOpenBracket != 0 && markdown.toCharArray()[nextOpenBracket-1] == '!') image = true;
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             if (nextCloseBracket == -1) break;
-            String check0 = markdown.substring(nextOpenBracket + 1, nextCloseBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             if (openParen == -1) break;
             int closeParen = markdown.indexOf(")", openParen);
@@ -26,7 +25,8 @@ public class MarkdownParse {
         	if (check.contains("(")) {
         		openParen = markdown.indexOf("(", openParen + 1);
         	}
-            if (!image) toReturn.add(markdown.substring(openParen + 1, closeParen));
+            String outString = markdown.substring(openParen + 1, closeParen);
+            if (!image && !outString.isEmpty()) toReturn.add(outString);
             currentIndex = closeParen + 1;
         }
         return toReturn;
