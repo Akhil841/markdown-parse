@@ -17,6 +17,7 @@ public class MarkdownParse {
             if (nextOpenBracket != 0 && markdown.toCharArray()[nextOpenBracket-1] == '!') image = true;
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             if (nextCloseBracket == -1) break;
+            String check0 = markdown.substring(nextOpenBracket + 1, nextCloseBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             if (openParen == -1) break;
             int closeParen = markdown.indexOf(")", openParen);

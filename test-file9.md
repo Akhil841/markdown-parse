@@ -1,2 +1,2 @@
-[hello[]()](test.com/test/)
+[hello()](test.com/test/)
 Does this work?
