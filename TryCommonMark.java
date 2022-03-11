@@ -18,14 +18,22 @@ class TryCommonMark {
         	visitChildren(text);
     	}
 	}
+
+	static class LinkCountVisitor extends AbstractVisitor {
+		int linkCount = 0;
+		public void visit(Link link) {
+			if (!link.getDestination().equals("")) {
+				linkCount++;
+			}
+
+			visitChildren(link);
+		}
+	}
 	public static void main(String[] args) {
 		Parser parser = Parser.builder().build();
-		Node document = parser.parse("This is *Sparta*");
-		HtmlRenderer renderer = HtmlRenderer.builder().build();
-		renderer.render(document);
-		Node node = parser.parse("Example\n=======\n\nSome more text");
-		WordCountVisitor visitor = new WordCountVisitor();
-		node.accept(visitor);
-		System.out.println(visitor.wordCount); 
+		Node link = parser.parse("[hello](google.com)\n[sauce](sauce.com)\n[test](test.com)");
+		LinkCountVisitor visitor = new LinkCountVisitor();
+		link.accept(visitor);
+		System.out.println(visitor.linkCount);
 	}
 }
